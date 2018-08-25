@@ -1,23 +1,41 @@
 import numpy as np
 
-def best_sell_naive(prices):
+'''
+For correctness tests.
+'''
+def naive_solution(prices):
     best = 0
     for i in range(len(prices) - 1):
         for j in range(i + 1, len(prices)):
             best = max(best, prices[j] - prices[i])
     return best
 
-def best_sell(prices):
-    global_min = global_max = prices[0]
-    best_profit = 0
-    for ele in prices:
-        if ele > global_max:
-            global_max = ele
-            best_profit = max(best_profit, global_max - global_min)
-        elif ele < global_min:
-            global_min = global_max = ele
-    return best_profit
+'''
+Let arr[i] be some value and arr[i+k] be a later
+value time-wise.
 
+If arr[i] < arr[i+k] you know arr[i+k] CANNOT be
+the minimum buy point, because whatever you sell
+it for you always could have bought it for less
+at arr[i].
+
+Only if arr[i+k] < arr[i] should you consider it
+a new potential minimum. If this happens, the new
+potential minimum should only be chosen if you
+get a better glob_dif at some value after arr[i+k].
+
+You do not have to check any of the sell values
+before arr[i+k] because you can't sell before you
+buy.
+
+You only need to check if a sale after arr[i+k]
+will give you a better profit. If so, you can
+discard the previous minimum arr[i] because
+whatever you sell it for, you could always have
+bought it for cheaper at arr[i+k].
+
+The below solution runs in O(n) time.
+'''
 def max_profit(arr):
     curr_min = arr[0]
     glob_min = arr[0]
@@ -30,8 +48,10 @@ def max_profit(arr):
             glob_dif = x - curr_min
     return glob_dif
 
-
+'''
+Correctness test
+'''
 for i in range(1000):
     random_arr = np.random.randint(0, 100, size=100)
-    if(best_sell(random_arr) != max_profit(random_arr)):
+    if(naive_solution(random_arr) != max_profit(random_arr)):
         print('bad')
