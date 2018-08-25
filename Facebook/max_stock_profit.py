@@ -52,7 +52,7 @@ bought it for cheaper at arr[i+k].
 
 The below solution runs in O(n) time.
 '''
-def max_profit(arr):
+def linear_solution(arr):
     curr_min = arr[0]
     glob_min = arr[0]
     glob_dif = 0
@@ -69,5 +69,5 @@ Correctness test
 '''
 for i in range(1000):
     random_arr = np.random.randint(0, 100, size=100)
-    if(naive_solution(random_arr) != max_profit(random_arr)):
+    if(naive_solution(random_arr) != linear_solution(random_arr)):
         print('bad')
