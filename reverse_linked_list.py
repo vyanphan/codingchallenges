@@ -37,8 +37,6 @@ class LinkedList(object):
 ''' Reverses linked list in-place in O(n) time. '''
 def reverse(ll):
 	prev = ll.head
-	ll.print_nodes()
-	# print(prev.data)
 	if prev != None:
 		curr = prev.next
 		while curr != None:
@@ -46,24 +44,25 @@ def reverse(ll):
 			curr.next = prev
 			prev = curr
 			curr = ll.head.next
+	ll.head = prev
 
 
 
 
-# ''' Test 0 '''
-# list0 = LinkedList()
-# list0.print_nodes()
-# reverse(list0)
-# list0.print_nodes()
-# print()
+''' Test 0 '''
+list0 = LinkedList()
+list0.print_nodes()
+reverse(list0)
+list0.print_nodes()
+print()
 
-# ''' Test 1 '''
-# list1 = LinkedList()
-# list1.add(LinkedNode(1))
-# list1.print_nodes()
-# reverse(list1)
-# list1.print_nodes()
-# print()
+''' Test 1 '''
+list1 = LinkedList()
+list1.add(LinkedNode(1))
+list1.print_nodes()
+reverse(list1)
+list1.print_nodes()
+print()
 
 ''' Test 2 '''
 list2 = LinkedList()
