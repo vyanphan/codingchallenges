@@ -48,27 +48,16 @@ def reverse(ll):
 
 
 
+def reverse_tester(n):
+	ll = LinkedList()
+	for i in range(1, n+1):
+		ll.add(LinkedNode(i))
+	ll.print_nodes()
+	reverse(ll)
+	ll.print_nodes()
+	print()
 
-''' Test 0 '''
-list0 = LinkedList()
-list0.print_nodes()
-reverse(list0)
-list0.print_nodes()
-print()
-
-''' Test 1 '''
-list1 = LinkedList()
-list1.add(LinkedNode(1))
-list1.print_nodes()
-reverse(list1)
-list1.print_nodes()
-print()
-
-''' Test 2 '''
-list2 = LinkedList()
-for i in range(1, 6):
-	list2.add(LinkedNode(i))
-list2.print_nodes()
-reverse(list2)
-list2.print_nodes()
-print()
+reverse_tester(0)
+reverse_tester(1)
+reverse_tester(2)
+reverse_tester(7)
