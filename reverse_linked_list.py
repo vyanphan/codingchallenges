@@ -1,7 +1,10 @@
 '''
-Reversing a singly linked list.
-'''
+Reversing a singly linked list in-place.
+You should be able to do this in O(n) time.
 
+Do not put the items into an array, reverse the
+array, and put them back into the linked list.
+'''
 
 '''
 For testing purposes.
@@ -45,7 +48,6 @@ def reverse(ll):
 			prev = curr
 			curr = ll.head.next
 	ll.head = prev
-
 
 
 def reverse_tester(n):
