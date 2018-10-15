@@ -1,0 +1,24 @@
+3SAT				2SAT
+Traveling Salesman	Minimum Spanning Tree
+Longest Path		Shortest Path
+3D Matching			Bipartite Matching
+Knapsack			Unary Knapsack
+Independent Set		Tree Independent Set
+Integer LP			Linear Programming
+Hamilton Cycle		Euler Cycle
+Balanced Cut		Minimum Cut
+
+
+					SAT
+					 |
+					3SAT
+				   /    \
+	    Independent		 3D 
+	        Set		  Matching
+	       /   \		  |
+	 Vertex	   Clique    ZOE
+	 Cover			   /  |  \
+				  Subset ILP  Hamilton
+	               Sum         Cycle
+	                             |
+	                            TSP 

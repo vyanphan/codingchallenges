@@ -1,0 +1,43 @@
+Encapsulation
+	- getX()
+	- setX()
+
+Polymorphism
+	- overloading
+		child.method(String s)
+		child.method(int x, int y)
+	- overriding
+		parent.method(int x, int y)
+		child.method(int x, int y)
+	
+Multiple Inheritance (not allowed in Java)
+	class Grandparent { 
+		public: 
+		    Grandparent(int x) { cout << "Grandparent::Grandparent(int)" << endl; }
+		    Grandparent() { cout << "Grandparent::Grandparent()" << endl; } 
+	}; 
+	  
+	class Parent1 : virtual public Grandparent { 
+		public: 
+		    Parent1(int x):Grandparent(x) { cout<<"Parent1::Parent1(int)"<< endl; } 
+	}; 
+	  
+	class Parent2 : virtual public Grandparent { 
+		public: 
+		    Parent2(int x):Grandparent(x) { cout<<"Parent2::Parent2(int)"<< endl; } 
+	}; 
+	  
+	class Child : public Parent1, public Parent2 { 
+		public: 
+	    	Child(int x):Parent2(x), Parent1(x) { cout<<"Child::Child(int)"<< endl; } 
+	}; 
+
+	int main() {
+		Child child(30);
+		/**
+		 * Grandparent::Grandparent()
+		 * Parent1::Parent1(int)
+		 * Parent2::Parent2(int)
+		 * Child::Child(int)
+		 */
+	}
