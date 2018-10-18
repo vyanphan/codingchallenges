@@ -1,0 +1,26 @@
+Security Attacks
+1. Basics
+	- HTTP instead of HTTPS
+	- Input validation
+2. Insecure direct object reference
+	- predictable identifiers (enumeration attack)
+	- checking authentication status but not which user is authenticated
+3. Mishandling client side data
+	- client data should be untrusted by default
+	- forgetting integrity checks
+	- confidentiality of data
+4. JWT tokens (signing and encryption)
+	- forgetting to check integrity when decoding
+	- some .decode() libraries don't throw integrity exceptions, use the right one
+	- shared secret for token signing leaving the backend (use public key!)
+5. Not propagating identity information
+6. Cookies (beware of CSRF)
+	- configure security flags correctly
+	- cookie prefixes
+7. Custom Headers
+	- careful when attaching header to outgoing requests
+	- harder to use for web apps (CORS, SSE, WebSockets, DocObjModel elements)
+	- do not suffer from CSRF
+8. Cross Origin Resource Sharing (CORS)
+	- CSRF: hidden form tokens
+	- CORS: nontraditional HTTP requests (only allowed if on server whitelist)
