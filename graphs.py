@@ -99,3 +99,76 @@ def DFS(graph, s):
     return DFS_helper(graph, s)
 
 print(DFS(example_graph, 'S'))
+
+
+
+
+
+# Graph Colouring Problem
+class Graph(): 
+    def __init__(self, graph): 
+        self.graph = graph 
+        self.V = len(graph)
+  
+    def isSafe(self, v, colour, c): # neighbors not same colour
+        for i in range(self.V): 
+            if self.graph[v][i] == 1 and colour[i] == c: 
+                return False
+        return True
+
+    def graphColourUtil(self, m, colour, v): 
+        if v == self.V: # reached last vertex successfully
+            return True
+        for c in range(1, m+1): # try first colour that works
+            if self.isSafe(v, colour, c): 
+                colour[v] = c 
+                if self.graphColourUtil(m, colour, v+1): 
+                    return True
+                colour[v] = -1
+        return False
+
+
+    def graphColouring(self, m): 
+        colour = [-1] * self.V 
+        self.graphColourUtil(m, colour, 0)
+        return colour
+  
+# Driver Code 
+graph = [[0,1,0,1,1,0],
+         [1,0,1,0,1,1],
+         [0,1,0,0,0,1],
+         [1,0,0,0,1,0],
+         [1,1,0,1,0,1],
+         [0,1,1,0,1,0]] 
+g = Graph(graph) 
+print(g.graphColouring(3))
+
+
+
+'''
+Topographic sort.
+We can come up with another system for marking 
+visited/done nodes.
+'''
+def visit(n, visited, done, ans):
+    if n in done:
+        return
+    if n in visited:
+        return 'cycle'
+    visited.add(n)
+    for m in n.neighbors:
+        ans = visit(m, visited, done, ans)
+    done.add(n)
+    return [L] + ans
+
+def topographic_sort(graph):
+    visited = set()
+    done = set()
+    V = graph.vertices
+    ans = []
+    while not V.empty():
+        n = V.pop()
+        ans = visit(n, visited, done, ans)
+    return ans
+        
+
