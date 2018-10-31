@@ -1,0 +1,56 @@
+- Process/thread
+	process:	executing program, may have many threads
+				more independent than threads, have their own mem
+	thread:		basic unit OS allows processor time
+				might share resources
+
+- lock		1 thread at a time
+  mutex		lock but for processes
+  sema		sema.up or sema.down, increments allow multiple threads up to a certain num
+
+- context switch
+   - happens when
+   	  - process exits
+   	  - syscall has process give up cpu
+   	  - uses up time slice
+   	  - waiting on resource
+   	  - higher priority task wakes up
+   - how to do
+      1. save current process
+      2. restore new process
+      - address space just changed so TLB entries no longer valid
+		- options		
+			Invalidate TLB, simple but expensive (especially for frequent switches)
+			Include ProcessID in TLB, architectural soln & needs hardware
+		- what if translation tables change?
+			For example, to move page from mem→disk or vice versa
+			MUST invalidate TLB entry, else might think that page still in mem!
+	- context switching is hard!
+		- if mistake: intermittent failures depending on
+			When switch occurred
+			What (buggy) thread might be using what (buggy) register
+			System gives wrong result without warning
+		- hard to design exhaustive test; too many combos and interleavings
+		- numbers
+			Switch frequency:		10-100ms
+			Switch time:		3-4 us (Linux Intel i7 & E5) 
+				Thread switching faster than process switching (100 ns)
+				Cross-core switching ~2x more expensive than within-core switch
+				Can increase ~100x or more with size of working set
+			Depends on cache limits & process/thread's memory requirements
+				Many processes multi-threaded
+				Context switches may be within-process/across-process
+
+
+- scheduling
+  different tasks get different priorities
+  	weighted lottery system
+  	minimize total time wait: shortest time remaining (not necessarily best)
+  minimize context switches (because they cause overhead)
+  kill/steal or wait/die
+
+- modern concurrency
+	OOO exec
+	hardware stuff
+	hyperthreading
+

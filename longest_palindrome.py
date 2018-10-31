@@ -57,9 +57,19 @@ Since the two strings are reverses, the longest
 common substring will be the longest palindromic
 substring of the original non-reversed string. 
 '''
-# from suffix_trees import STree
-# def suffix_tree_solution(string):
-	# st = STree.STree(string + '$' + string[::-1] + '#')
+# class ST_Node():
+# 	def __init__(self, value):
+# 		self.val = value
+# 		self.children = []
+
+# def suffix_tree(s):
+
+
+
+
+
+
+
 	
 
 

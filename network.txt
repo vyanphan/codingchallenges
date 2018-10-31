@@ -1,4 +1,25 @@
-Security Attacks
+- router (connected to modem - mod/demod if ISP analog)
+	1. gets packet
+	2. packet destination for (some IP)
+	3. forward packet to that IP
+- DNS
+	1. enter URL
+	2. DNS Cache 1: is this in cache? no?
+		higher level DNS: is this in cache? no?
+			...etc.
+	3. Found the lookup! Translate to IP addr and cache
+	Some attacks
+		poison cache so it maps to another IP addr
+		change valid time so evil IP is stuck in cache forever
+- load balance
+	round robin
+	least connections
+	IP hashing
+- firewall
+	packet filtering
+
+
+API Security Attacks
 1. Basics
 	- HTTP instead of HTTPS
 	- Input validation
